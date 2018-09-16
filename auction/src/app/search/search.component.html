@@ -1,0 +1,24 @@
+<form  [formGroup]="formModel" (submit)="onSearch()" novalidate>
+  <div class="form-group" [class.hasError]="formModel.hasError('minlength','title')">
+    <label for="productTitle">商品名称:</label>
+    <input type="text" id="productTitle" placeholder="商品名称" class="form-control"  formControlName="title"/>
+    <span class="help-block" [class.hidden]="!formModel.hasError('minlength','title')">
+      请至少输入4个字符
+    </span>
+  </div>
+  <div class="form-group" [class.hasError]="formModel.hasError('postive','price')">
+    <label for="productPrice"></label>
+    <input type="number" id="productPrice" placeholder="商品价格" class="form-control" formControlName="price">
+    <span [class.hidden]="!formModel.hasError('minlength','price')">请输入正数</span>
+  </div>
+  <div class="form-group">
+    <label for="productCategory"></label>
+    <select  formControlName="category" id="productCategory" class="form-control">
+      <option value="-1">全部分类</option>
+      <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-block">搜索</button>
+  </div>
+</form>

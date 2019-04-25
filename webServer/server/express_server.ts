@@ -23,6 +23,8 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/api/products',(req,res)=>{
+    res.setHeader("Access-Control-Allow-Origin", "*"); //同意全部域名訪问
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8081"); 
     res.json(persons);
 })
 
